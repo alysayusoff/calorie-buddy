@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Build a Recipe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+        function myFunction() {
+            document.getElementById('quantity').disabled = !this.checked;
+            document.getElementById('button').disabled = !this.checked;
+        }
+    </script>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(190, 86, 86);
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: rgb(243, 122, 122);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            float: left;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 400px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: auto;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <!--nav bar-->
+            <li><a href="/topic7/mid-term/">Home</a></li>
+            <li><a href="/topic7/mid-term/addfood">Add Food</a></li>
+            <li><a href="/topic7/mid-term/search">Search</a></li>
+            <li><a href="/topic7/mid-term/list">List of Foods</a></li>
+            <li><a href="/topic7/mid-term/recipe">Build a recipe!</a></li>
+            <li><a href="/topic7/mid-term/about">About</a></li>
+        </ul>
+    </div>
+    <div>
+        <center>
+            <h1>Build a Recipe</h1>
+            <table id="table">
+                <tr>
+                    <!--table headers-->
+                    <th>Food</th>
+                    <th>Value per Unit</th>
+                    <th>Unit</th>
+                    <th>Calories (g)</th>
+                    <th>Carbs (g)</th>
+                    <th>Fats (g)</th>
+                    <th>Proteins (g)</th>
+                    <th>Salt (g)</th>
+                    <th>Sugar (g)</th>
+                    <th>Quantity</th>
+                </tr>
+                <!--get records-->
+                <% availableFood.forEach(function(food){ %>
+                <tr id="<%= food.id %>">
+                    <!--display in each field-->
+                    <td><%= food.name %></td>
+                    <td><%= food.val %></td>
+                    <td><%= food.unit %></td>
+                    <td><%= food.cal %></td>
+                    <td><%= food.carb %></td>
+                    <td><%= food.fat %></td>
+                    <td><%= food.protein %></td>
+                    <td><%= food.salt %></td>
+                    <td><%= food.sugar %></td>
+                    <td>
+                        <input type="number" id="quantity" name="quantity" style="width:45px;" min="1" max="50"
+                            disabled>
+                    </td>
+                    <td>
+                        <button type="button" id="button" disabled>Add</button>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="checkbox" name="checkbox" onclick="myFunction()">
+                    </td>
+                </tr>
+                <% }) %>
+                <!--<script>
+                    function myFunction() {
+                        document.getElementById('quantity').disabled = !this.checked;
+                        document.getElementById('button').disabled = !this.checked;
+                    }
+                </script>-->
+            </table>
+        </center>
+    </div>
+</body>
+
+</html>

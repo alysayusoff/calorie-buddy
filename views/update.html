@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Update Food Information</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(190, 86, 86);
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: rgb(243, 122, 122);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            float: left;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 700px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <!--nav bar-->
+            <li><a href="/topic7/mid-term/">Home</a></li>
+            <li><a href="/topic7/mid-term/addfood">Add Food</a></li>
+            <li><a href="/topic7/mid-term/search">Search</a></li>
+            <li><a href="/topic7/mid-term/list">List of Foods</a></li>
+            <!--<li><a href="/topic7/mid-term/recipe">Build a recipe!</a></li>-->
+            <li><a href="/topic7/mid-term/about">About</a></li>
+        </ul>
+    </div>
+    <div>
+        <center>
+            <h1>Update a Food Item</h1>
+            <div class="container">
+                <!--form to update record-->
+                <form method="POST" action="/topic7/mid-term/foodupdated">
+                    <!--get data on particular record to update-->
+                    <% availableFood.forEach(function(food){ %>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="name">Food</label>
+                        </div>
+                        <div class="col-75">
+                            <input id="id" name="id" type="hidden" value="<%= food.id %>">
+                            <input type="text" id="name" name="name" value="<%= food.name %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="val">Typical Value per unit</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="val" name="val" value="<%= food.val %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="unit">Unit of Typical Value</label>
+                        </div>
+                        <div class="col-75">
+                                <input type="text" id="unit" name="unit" value="<%= food.unit %>" required>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="cal">Calories (g)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="cal" name="cal" value="<%= food.cal %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="carb">Carbs (g)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="carb" name="carb" value="<%= food.carb %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="fat">Fats (g)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fat" name="fat" value="<%= food.fat %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="protein">Proteins (g)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="protein" name="protein" value="<%= food.protein %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="salt">Salt (g)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="salt" name="salt" value="<%= food.salt %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="sugar">Sugar (g)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="sugar" name="sugar" value="<%= food.sugar %>" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Update">
+                    </div>
+                    <% }) %>
+                </form>
+            </div>
+        </center>
+    </div>
+</body>
+
+</html>
